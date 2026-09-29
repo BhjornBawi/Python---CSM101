@@ -1,0 +1,45 @@
+
+Bawi_name = input("Enter employee name: ")
+Bawi_position = input("Enter job position (Janitor, Clerk, Cashier, Manager): ")
+Bawi_Hours = float(input("Enter actual hours worked: "))
+match Bawi_position.lower():
+    case "janitor":
+        Bawi_salary = 18000
+    case "clerk":
+        Bawi_salary = 22000
+    case "cashier":
+        Bawi_salary = 24000
+    case "manager":
+        Bawi_salary = 40000
+    case _:
+        print("Invalid Job Position.")
+Bawi_basic = Bawi_salary / 2
+Bawi_hourly = Bawi_basic / 88
+Bawi_absent_hours = 0
+Bawi_absence_deduction = 0
+Bawi_ot_hours = 0
+Bawi_ot_rate = 0
+Bawi_ot_pay = 0
+if Bawi_Hours < 88:
+    Bawi_absent_hours = 88 - Bawi_Hours
+    Bawi_absence_deduction = Bawi_absent_hours * Bawi_hourly
+elif Bawi_Hours > 88:
+    Bawi_ot_hours = Bawi_Hours - 88
+    Bawi_ot_rate = Bawi_hourly * 1.25
+    Bawi_ot_pay = Bawi_ot_hours * Bawi_ot_rate
+Bawi_net_salary = Bawi_basic - Bawi_absence_deduction + Bawi_ot_pay
+print("\n========== HALF-MONTH PAYROLL ==========")
+print(f"Employee Name:{Bawi_name}")
+print(f"Job Position:{Bawi_position}")
+print(f"Actual Hours Worked:{Bawi_Hours:.0f}")
+print(f"Monthly Salary:{Bawi_salary:,.2f}")
+print(f"Basic Half-Month Salary:{Bawi_basic:,.2f}")
+print(f"Hourly Rate:{Bawi_hourly:,.2f}")
+print(f"Absent Hours:{Bawi_absent_hours:.2f}")
+print(f"Absence Deduction:{Bawi_absence_deduction:,.2f}")
+print(f"Overtime Hours:{Bawi_ot_hours:.2f}")
+print(f"Overtime Rate:{Bawi_ot_rate:,.2f}")
+print(f"Overtime Pay:{Bawi_ot_pay:,.2f}")
+print("=========================================")
+print(f"Net Half-Month Salary:₱{Bawi_net_salary:,.2f}")
+print("=========================================")
